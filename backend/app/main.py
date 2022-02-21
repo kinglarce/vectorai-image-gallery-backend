@@ -15,7 +15,7 @@ middleware = [
 async def homepage(request):
     return JSONResponse({"message": "Hello World!"})
 
-async def bank(request: Request):
+async def get_bank(request: Request):
     query = Bank.select()
     contents = await database.fetch_all(query)
     response = [
@@ -27,12 +27,17 @@ async def bank(request: Request):
         }
         for content in contents
     ]
+    JSONResponse()
     return JSONResponse(response)
+
+async def update_bank(request: Request):
+    pass
 
 routes = [
     Route("/", endpoint=homepage),
     Mount('/bank', routes=[
-        Route('/', bank, methods=['GET'])
+        Route('/', get_bank, methods=['GET']),
+        Route('/', update_bank, methods=['POST'])
     ])
 ]
 
