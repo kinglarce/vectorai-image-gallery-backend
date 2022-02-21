@@ -22,7 +22,6 @@ middleware = [
 async def homepage(request):
     return JSONResponse({'message': 'Hello World!'})
 
-
 async def get_bank(request: Request):
     query = Bank.select()
     contents = await database.fetch_all(query)
@@ -38,8 +37,12 @@ async def get_bank(request: Request):
     ]
     return JSONResponse(response)
 
-
 async def update_bank(request: Request):
+    payload = await request.json()
+    for data in payload:
+        statement = Bank.update().where(Bank.c._id == data['_id']).values(
+            {'position': data['position']})
+        await database.execute(statement)
     return JSONResponse({'message': 'Successfully Updated'})
 
 routes = [
