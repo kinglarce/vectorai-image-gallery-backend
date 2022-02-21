@@ -11,7 +11,7 @@ metadata = sqlalchemy.MetaData()
 Bank = sqlalchemy.Table(
     "bank",
     metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
+    sqlalchemy.Column("_id", sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("bank_type", sqlalchemy.String),
     sqlalchemy.Column("title", sqlalchemy.String),
     sqlalchemy.Column("position", sqlalchemy.Integer),

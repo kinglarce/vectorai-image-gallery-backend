@@ -7,7 +7,7 @@ async def main() -> None:
 
     query = """
         CREATE TABLE bank (
-            id INTEGER PRIMARY KEY, 
+            _id INTEGER PRIMARY KEY, 
             bank_type VARCHAR(100), 
             title VARCHAR(100), 
             position INTEGER,
